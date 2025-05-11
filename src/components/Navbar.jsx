@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
+import ThemeToggle from "./ThemeToggle";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +33,11 @@ const Navbar = () => {
       className={`${
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? "bg-primary" : "bg-transparent"
+        scrolled
+          ? theme === "dark"
+            ? "bg-primary-dark"
+            : "bg-primary-light"
+          : "bg-transparent"
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -43,25 +50,46 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+          <p
+            className={`${
+              theme === "dark" ? "text-white" : "text-secondary-light"
+            } text-[18px] font-bold cursor-pointer flex`}
+          >
             Karengula Dinakar &nbsp;
             <span className="sm:block hidden"></span>
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-6">
+          <ul className="list-none hidden sm:flex flex-row gap-10">
+            {navLinks.map((nav) => (
+              <li
+                key={nav.id}
+                className={`${
+                  active === nav.title
+                    ? theme === "dark"
+                      ? "text-white"
+                      : "text-secondary-light"
+                    : theme === "dark"
+                    ? "text-secondary-dark"
+                    : "text-secondary-light"
+                } hover:${
+                  theme === "dark" ? "text-white" : "text-secondary-light"
+                } text-[18px] font-medium cursor-pointer`}
+                onClick={() => setActive(nav.title)}
+              >
+                {nav.type === "external" ? (
+                  <a href={nav.url} target="_blank" rel="noopener noreferrer">
+                    {nav.title}
+                  </a>
+                ) : (
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                )}
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
@@ -88,7 +116,13 @@ const Navbar = () => {
                     setActive(nav.title);
                   }}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  {nav.type === "external" ? (
+                    <a href={nav.url} target="_blank" rel="noopener noreferrer">
+                      {nav.title}
+                    </a>
+                  ) : (
+                    <a href={`#${nav.id}`}>{nav.title}</a>
+                  )}
                 </li>
               ))}
             </ul>

@@ -31,8 +31,18 @@ export const navLinks = [
     title: "Work",
   },
   {
+    id: "leetcode",
+    title: "Leetcode",
+  },
+  {
     id: "contact",
     title: "Contact",
+  },
+  {
+    id: "resume",
+    title: "Resume",
+    type: "external",
+    url: "/resume/resume.pdf"
   },
 ];
 
@@ -58,19 +68,21 @@ const services = [
 
 const experiences = [
   {
-    title: "Frontend Web Developer (BootCamp)",
-    company_name: "RE:CODED",
-    icon: recoded,
-    iconBg: "#ffff",
-    date: "June 2023 - December 2023",
+    title: "Full-Stack Developer",
+    company_name: "CGG",
+    icon: recoded, // You can replace this with CGG's logo if available
+    iconBg: "#ffffff",
+    date: "July 2023 – Present",
     points: [
-      "Completed RE:CODED Frontend Web Development Bootcamp, acquiring expertise in HTML, CSS, JavaScript, React, and Next.js.",
-      "Proficient in building responsive web designs and interactive web applications, with real-world project experience in Next.js.",
-      "Committed to continuous learning and ready to create exceptional user experiences while contributing effectively to web development projects.",
+      "Developed and maintained enterprise-level web applications using React for the frontend and Spring Boot for the backend.",
+      "Worked on PostgreSQL for designing and optimizing complex database schemas, ensuring high performance and data integrity.",
+      "Played a key role in the development of various projects, integrating secure API development practices.",
+      "Collaborated with cross-functional teams to deliver scalable and maintainable features, following Agile and CI/CD methodologies.",
+      "Contributed to internal tooling and reusable modules to accelerate development across multiple projects within the organization."
     ],
   },
-
 ];
+
 
 const Certifications = [
   {
