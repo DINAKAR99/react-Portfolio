@@ -38,22 +38,23 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "Full-Stack Web Development",
+    icon: web, // Represents front-end + back-end work
   },
   {
-    title: "Designer",
-    icon: design,
+    title: "API Development with Spring Boot",
+    icon: design, // Use an appropriate icon for back-end/API
   },
   {
-    title: "Polytechnic Engineer",
-    icon: engineer,
+    title: "Frontend Development (React)",
+    icon: engineer, // A React or code icon
   },
   {
-    title: "Content Creator",
-    icon: content,
+    title: "Database Management (PostgreSQL)",
+    icon: content, // Use a database icon
   },
 ];
+
 
 const experiences = [
   {
@@ -68,45 +69,7 @@ const experiences = [
       "Committed to continuous learning and ready to create exceptional user experiences while contributing effectively to web development projects.",
     ],
   },
-  {
-    title: "Content Operations Specialitst",
-    company_name: "CloudView",
-    icon: cloudview,
-    iconBg: "#ffff",
-    date: "March 2022 - April 2023",
-    points: [
-      "Monitoring breaking news and trending topics, sending daily push notications based on user behavior and location, and working in both Algerian and Egyptian markets to ensure timely and relevant updates.",
-      "Providing continuous feedback on UX/UI to improve Phoenix Browser, with over 105 feedback submissions and feature suggestions.",
-      "Sourcing, editing, and publishing high-quality articles to enhance the user experience of Phoenix Browser.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-    ],
-  },
-  {
-    title: "Engineer Intern",
-    company_name: "Cosider Carrieres",
-    icon: cosider,
-    iconBg: "#ffff",
-    date: "March 2020 - November 2020",
-    points: [
-      "Conducted a comprehensive study on mining systems, with a focus on analyzing various parameters and identifying optimal techniques and technological processes.",
-      "Developed a project plan and scope for the extraction of granitic blocks from the Tesnou1 deposit, taking into account the geological conditions of the area..",
-      "Estimated all necessary resources and costs to ensure project success.",
-      "Demonstrated prociency in project management, research, and analysis, as well as an understanding of mining systems and related technologies.",
-    ],
-  },
 
-  {
-    title: "Head of Trainings Department",
-    company_name: "El Maarifa Scientic Association",
-    icon: vic,
-    iconBg: "#ffff",
-    date: "December 2018 - January 2020",
-    points: [
-      "Established and trained a new department structure.",
-      "Led a team of 30+ members to organize 20+ successful trainings in less than a year.",
-      "Contributed to dening annual projects plan, club charter, and vision at the committee board level.",
-    ],
-  },
 ];
 
 const Certifications = [
@@ -161,126 +124,72 @@ const Certifications = [
 ];
 
 const projects = [
-  {
-    name: "Next.js, Firebase and Axios-Powered E-Commerce Platform",
+    {
+    name: "Dynamic Ticketing System",
     description:
-      "Designed and developed a collaborative e-commerce platform using Next.js, Tailwind CSS, Firebase, and Axios, emphasizing responsive design, real-time functionality, and effective teamwork via GitHub.",
+      "Developed a scalable and reusable ticketing system using Spring Boot and PostgreSQL, designed as a plug-and-play solution for multiple projects within our company. The system enables efficient issue tracking, assignment, and resolution, and can be seamlessly integrated into any project by simply configuring database credentials. Built with a focus on modularity and maintainability, it functions as an internal product to streamline project-level support and operations.",
     tags: [
       {
-        name: "Next.js",
+        name: "Spring Boot",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "PostgreSQL",
         color: "green-text-gradient",
       },
       {
-        name: "firebase",
+        name: "Java",
         color: "pink-text-gradient",
       },
+    ],
+    image: bicyx,
+    source_code_link: "",
+    project: "https://ticketingsystem.cgg.gov.in/DynamicTicketingSystem/projectSwitch?project=tgmiv",
+  },
+  {
+    name: "React.js, Firebase and Axios-Powered Trading Journal platform ",
+    description:
+      "Designed and developed a Trading Journal platform using React.js, Firebase, and Axios, emphasizing responsive design, real-time functionality, and effective teamwork via GitHub.",
+    tags: [
       {
-        name: "tailwind",
-        color: "blue-text-gradient",
+        name: "React.js",
+        color: "green-text-gradient",
       },
+      {
+        name: "Firebase",
+        color: "pink-text-gradient",
+      },
+      // {
+      //   name: "tailwind",
+      //   color: "blue-text-gradient",
+      // },
     ],
     image: magnimarket,
     source_code_link:
-      "https://github.com/202306-NEA-DZ-FEW/e-commerce-project-magnimarket",
+      "https://github.com/DINAKAR99/tradejournal",
+    project:
+      "https://journalx.pages.dev/",
   },
   {
-    name: "Responsive E-Commerce Website Developed Using Vue.js and Tailwind CSS",
+    name: "Internal Quiz & Assessment Platform Developed Using React.js and Firebase",
     description:
-      "I created a responsive eCommerce website using Vue.js and Tailwind CSS, with a dark mode and dynamic animations, showcasing my front-end development skills.",
+      " Developed the project for the internal assement of employees for the latest technologies  showcasing my front-end development skills.",
     tags: [
       {
-        name: "Vue.js",
+        name: "React.js",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "Firebase",
         color: "pink-text-gradient",
       },
     ],
     image: ecommerce,
     source_code_link: "https://github.com/0m3ga13/Ecommerce-Website",
-  },
-  {
-    name: "Bicy-x Dynamic E-Commerce Site Powered by React and Three.js",
-    description:
-      "I developed a bicycle purchasing website using React and Three.js. The website's interface is user-friendly, and Three.js was utilized for 3D implementation.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "threejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: bicyx,
-    source_code_link: "https://github.com/0m3ga13/Bicy-x",
-  },
-  {
-    name: "Company Website",
-    description:
-      "I built a dynamic company website with MEVN stack and REST API, utilizing interactive front-end design and secure data storage with Mongoose.",
-    tags: [
-      {
-        name: "NodeJS",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Vue.js",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Express",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "Mongoose",
-        color: "green-text-gradient",
-      },
-    ],
-    image: cominox,
-    source_code_link: "https://github.com/0m3ga13/cominox/",
+    project: "https://brainybits.pages.dev/",
   },
 
-  {
-    name: "Video Face Recognition",
-    description:
-      "I developed a Python application using OpenCV and face recognition to extract and store faces found in a video. OpenCV was used to analyze frames and detect face.",
-    tags: [
-      {
-        name: "Python",
-        color: "green-text-gradient",
-      },
-      {
-        name: "OpenCV",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: facereco,
-    source_code_link: "https://github.com/0m3ga13/Face-recognition",
-  },
-  {
-    name: "React Portfolio",
-    description:
-      "I created a motion-rich website with React and Tailwind CSS, showcasing my front-end skills with responsive design and intuitive interface.",
-    tags: [
-      {
-        name: "React",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: thisportfolio,
-    source_code_link: "https://github.com/0m3ga13/",
-  },
+
 ];
 
 export { services, experiences, Certifications, projects };

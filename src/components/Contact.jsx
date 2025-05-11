@@ -38,7 +38,7 @@ const Contact = () => {
           from_name: form.name,
           to_name: "Karengula Dinakar",
           from_email: form.email,
-          to_email: "barkaKarengula Dinakar13@gmail.com",
+          to_email: "karenguladinakar@gmail.com",
           message: form.message,
         },
         import.meta.env.VITE_PUBLIC_CODE

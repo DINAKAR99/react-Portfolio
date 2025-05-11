@@ -14,8 +14,8 @@ import vic from "./company/vic.png";
 import cosider from "./company/cosider.png";
 import recoded from "./company/recoded.png";
 
-import ecommerce from "./projects/ecommerce.png";
-import bicyx from "./projects/bicyx.png";
+import ecommerce from "./projects/brainy.png";
+import bicyx from "./projects/dtick.png";
 import cominox from "./projects/cominox.png";
 import portfolio from "./projects/portfolio.png";
 import facereco from "./projects/facereco.png";
