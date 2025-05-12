@@ -7,7 +7,7 @@ import { ThemeContext } from "../context/ThemeContext";
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <section className={`justify-center relative w-full h-screen mx-auto`}>
+    <section className={`justify-center relative w-full h-screen mx-auto z-10`}>
       <div
         className={`flex relative justify-center items-center inset-0 top-[150px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -18,24 +18,18 @@ const Hero = () => {
 
         <div>
           <h1
-            className={`${styles.heroHeadText} ${
-              theme === "dark" ? "text-white" : "text-secondary-light"
-            }`}
+            className={`${styles.heroHeadText} text-white font-extrabold`}
+            style={{ textShadow: "0px 2px 4px rgba(0,0,0,0.4)" }}
           >
             Hi, I'm{" "}
             <span
-              className={`${
-                theme === "dark" ? "text-[#BDBEBE]" : "text-tertiary-light"
-              }`}
+              className="text-[#BDBEBE] font-extrabold"
+              style={{ textShadow: "0px 2px 5px rgba(0,0,0,0.5)" }}
             >
               Dinakar
             </span>
           </h1>
-          <p
-            className={`${styles.heroSubText} mt-2 ${
-              theme === "dark" ? "text-white-100" : "text-secondary-light"
-            }`}
-          >
+          <p className={`${styles.heroSubText} mt-2 text-white`}>
             Full-Stack Developer | Expertise in Java, React, Spring Boot, and
             PostgreSQL
           </p>
@@ -45,13 +39,7 @@ const Hero = () => {
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
-          <div
-            className={`w-[35px] h-[64px] rounded-3xl border-4 ${
-              theme === "dark"
-                ? "border-secondary-dark"
-                : "border-secondary-light"
-            } flex justify-center items-start p-2`}
-          >
+          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-[var(--border-color)] flex justify-center items-start p-2">
             <motion.div
               animate={{
                 y: [0, 24, 0],
@@ -61,9 +49,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className={`w-3 h-3 rounded-full ${
-                theme === "dark" ? "bg-secondary-dark" : "bg-secondary-light"
-              } mb-1`}
+              className="w-3 h-3 rounded-full bg-[var(--text-highlight)] mb-1"
             />
           </div>
         </a>

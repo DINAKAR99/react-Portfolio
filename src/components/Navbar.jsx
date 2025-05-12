@@ -33,12 +33,8 @@ const Navbar = () => {
       className={`${
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled
-          ? theme === "dark"
-            ? "bg-primary-dark"
-            : "bg-primary-light"
-          : "bg-transparent"
-      }`}
+        scrolled ? "bg-[var(--bg-primary)]" : "bg-transparent"
+      } relative`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -49,10 +45,16 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <img
+            src={logo}
+            alt="logo"
+            className={`w-9 h-9 object-contain ${
+              !scrolled ? "filter brightness-0 invert" : ""
+            }`}
+          />
           <p
             className={`${
-              theme === "dark" ? "text-white" : "text-secondary-light"
+              scrolled ? "text-[var(--text-primary)]" : "text-white"
             } text-[18px] font-bold cursor-pointer flex`}
           >
             Karengula Dinakar &nbsp;
@@ -66,15 +68,13 @@ const Navbar = () => {
               <li
                 key={nav.id}
                 className={`${
-                  active === nav.title
-                    ? theme === "dark"
-                      ? "text-white"
-                      : "text-secondary-light"
-                    : theme === "dark"
-                    ? "text-secondary-dark"
-                    : "text-secondary-light"
+                  scrolled
+                    ? active === nav.title
+                      ? "text-[var(--text-primary)]"
+                      : "text-[var(--text-secondary)]"
+                    : "text-white"
                 } hover:${
-                  theme === "dark" ? "text-white" : "text-secondary-light"
+                  scrolled ? "text-[var(--text-highlight)]" : "text-gray-300"
                 } text-[18px] font-medium cursor-pointer`}
                 onClick={() => setActive(nav.title)}
               >
@@ -88,28 +88,34 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          <ThemeToggle scrolled={scrolled} />
         </div>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain"
+            className={`w-[28px] h-[28px] object-contain ${
+              !scrolled ? "filter invert" : ""
+            }`}
             onClick={() => setToggle(!toggle)}
           />
 
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"} p-6 ${
+              scrolled ? "bg-[var(--bg-card)]" : "black-gradient"
+            } absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl shadow-lg`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
+                  className={`font-medium cursor-pointer text-[16px] ${
+                    scrolled
+                      ? active === nav.title
+                        ? "text-[var(--text-primary)]"
+                        : "text-[var(--text-secondary)]"
+                      : "text-white"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);
