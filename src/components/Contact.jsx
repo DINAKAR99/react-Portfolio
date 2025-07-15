@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -17,6 +17,15 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  // Initialize EmailJS
+  useEffect(() => {
+    if (import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+      emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -30,12 +39,43 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Basic form validation
+    if (!form.name || !form.email || !form.message) {
+      setError("Please fill in all fields before submitting.");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
     setLoading(true);
+
+    // Get the service ID and template ID from environment variables or use defaults
+    const serviceId =
+      import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_fv0m1hx";
+    const templateId =
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_i0xj4p8";
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Check if we have the required EmailJS configuration
+    if (!publicKey) {
+      console.error("EmailJS public key is missing");
+      setLoading(false);
+      setError(
+        "Email service is not properly configured. Please contact the administrator."
+      );
+      return;
+    }
 
     emailjs
       .send(
-        "service_fv0m1hx",
-        "template_i0xj4p8",
+        serviceId,
+        templateId,
         {
           from_name: form.name,
           to_name: "Karengula Dinakar",
@@ -43,24 +83,37 @@ const Contact = () => {
           to_email: "karenguladinakar@gmail.com",
           message: form.message,
         },
-        import.meta.env.VITE_PUBLIC_CODE
+        publicKey
       )
       .then(
-        () => {
+        (result) => {
+          console.log("Email sent successfully:", result.text);
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
+          setSuccess(true);
 
+          // Reset form
           setForm({
             name: "",
             email: "",
             message: "",
           });
+
+          // Reset success message after 5 seconds
+          setTimeout(() => {
+            setSuccess(false);
+          }, 5000);
         },
         (error) => {
           setLoading(false);
-          console.error(error);
+          console.error("Failed to send email:", error);
+          setError(
+            "Something went wrong. Please try again or contact me directly via email."
+          );
 
-          alert("Ahh, something went wrong. Please try again.");
+          // Clear error after 5 seconds
+          setTimeout(() => {
+            setError("");
+          }, 5000);
         }
       );
   };
@@ -82,6 +135,29 @@ const Contact = () => {
         >
           Contact.
         </h3>
+
+        {success && (
+          <div
+            className="mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+            role="alert"
+          >
+            <strong className="font-bold">Thank you! </strong>
+            <span className="block sm:inline">
+              Your message has been sent successfully. I will get back to you as
+              soon as possible.
+            </span>
+          </div>
+        )}
+
+        {error && (
+          <div
+            className="mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+            role="alert"
+          >
+            <strong className="font-bold">Error! </strong>
+            <span className="block sm:inline">{error}</span>
+          </div>
+        )}
 
         <form
           ref={formRef}
@@ -130,9 +206,40 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-[var(--text-highlight)] py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md hover:bg-opacity-90 transition-all"
+            disabled={loading}
+            className={`py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md transition-all ${
+              loading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-[var(--text-highlight)] hover:bg-opacity-90 hover:shadow-lg"
+            }`}
           >
-            {loading ? "Sending..." : "Send"}
+            {loading ? (
+              <span className="flex items-center">
+                <svg
+                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Sending...
+              </span>
+            ) : (
+              "Send"
+            )}
           </button>
         </form>
         <div className="flex mt-10 gap-5 justify-center">

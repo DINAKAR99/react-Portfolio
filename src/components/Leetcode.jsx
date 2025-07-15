@@ -11,11 +11,11 @@ const LeetcodeStats = () => {
   // You can replace these with your actual Leetcode stats
   const leetcodeStats = {
     username: "dinakar",
-    totalSolved: 222,
-    easySolved: 114,
-    mediumSolved: 100,
+    totalSolved: 246,
+    easySolved: 136,
+    mediumSolved: 101,
     hardSolved: 9,
-    ranking: "521,395",
+    ranking: "484,750",
     contestRating: "-",
     streak: 100,
   };

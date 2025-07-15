@@ -6,7 +6,7 @@ import { styles } from "../styles";
 import { github } from "../assets";
 import { logo } from "../assets";
 import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
+import { projects, workprojects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ProjectCard = ({
@@ -102,9 +102,21 @@ const Works = () => {
           and manage projects effectively.
         </motion.p>
       </div>
+      <br />
 
+      <h3 class="ms-5" style={{ fontSize: "25px" }}>
+        Personal Projects
+      </h3>
       <div className="mt-20 flex flex-wrap gap-7">
         {projects.map((project, index) => (
+          <ProjectCard key={`project-${index}`} index={index} {...project} />
+        ))}
+      </div>
+      <h3 class="ms-5" style={{ fontSize: "25px" }}>
+        Work Projects
+      </h3>
+      <div className="mt-20 flex flex-wrap gap-7">
+        {workprojects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>

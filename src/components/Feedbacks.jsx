@@ -22,7 +22,7 @@ const FeedbackCard = ({ index, Certificate, name, image, date, link }) => (
         </p>
       </div>
       <img
-        src={image}
+        src={imaged}
         className=" w-36 h-36 rounded-full p-5 sm:p-0"
         loading="lazy"
       />

@@ -22,6 +22,14 @@ import facereco from "./projects/facereco.png";
 import thisportfolio from "./projects/thisportfolio.png";
 import magnimarket from "./projects/MagniMarket.png";
 import developer from "./developer.svg";
+import tgrow from "./tgrow.png";
+import boiler from "./boiler.png";
+import miv from "./miv.png";
+import worklog from "./worklog.png";
+import url from "./url.jpg";
+
+
+
 
 export {
   developer,
@@ -44,4 +52,10 @@ export {
   thisportfolio,
   magnimarket,
   recoded,
+  tgrow,
+  boiler,
+  miv,
+  worklog,
+  url,
+
 };

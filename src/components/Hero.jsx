@@ -31,7 +31,7 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white`}>
             Full-Stack Developer | Expertise in Java, React, Spring Boot, and
-            PostgreSQL
+            PostgreSQL With over 2 + years of experience.
           </p>
         </div>
         <img src={developer} className="sm:flex hidden" />
