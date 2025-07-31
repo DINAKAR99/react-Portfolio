@@ -47,7 +47,7 @@ export const navLinks = [
     id: "resume",
     title: "Resume",
     type: "external",
-    url: "/resume_new.pdf"
+    url: "resume/resume_new.pdf"
   },
 ];
 
